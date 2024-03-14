@@ -5,7 +5,7 @@ import connectDB from "./db/db.js";
 import web from "./routes/patientRoutes.js";
 
 const app = express();
-const DATABASE_URL = process.env.PORT;
+const DATABASE_URL = process.env.DATABASE_URL;
 const PORT = process.env.PORT ;
 
 dotenv.config();
