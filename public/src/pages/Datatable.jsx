@@ -38,7 +38,7 @@ export default function StickyHeadTable() {
 
   const getPatientData = async () => {
     try {
-      const response = await fetch(`${import.meta.env.HOSTLINK}/patient/get`);
+      const response = await fetch(`${import.meta.env.VITE_HOST_API}/patient/get`);
       if (!response.ok) {
         throw new Error("Failed to fetch patient data");
       }
