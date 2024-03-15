@@ -4,6 +4,7 @@ import { useState } from "react";
 import styles from "./Login.module.css";
 import logins from "../assets/login";
 import { useNavigate } from "react-router-dom";
+import {toast} from "react-toastify";
 
 const LoginForm = () => {
   const [username, setUsername] = useState("");
@@ -17,9 +18,9 @@ const LoginForm = () => {
     );
     if (findInd !== -1) {
       navigate("/form", {state : username});
-      alert("Login successful!");
+      toast.success("Login successful!");
     } else {
-      alert("Invalid username or password");
+      toast.error("Invalid username or password");
     }
   };
 
