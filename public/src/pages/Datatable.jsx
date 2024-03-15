@@ -9,6 +9,7 @@ import TableContainer from "@mui/material/TableContainer";
 import TableHead from "@mui/material/TableHead";
 import TablePagination from "@mui/material/TablePagination";
 import TableRow from "@mui/material/TableRow";
+import { useNavigate } from "react-router-dom";
 
 const columns = [
   { id: "name", label: "Name", minWidth: 170 },
@@ -26,6 +27,7 @@ export default function StickyHeadTable() {
   const [page, setPage] = React.useState(0);
   const [rowsPerPage, setRowsPerPage] = React.useState(10);
   const [rows, setRows] = useState([]);
+  const navigate = useNavigate();
 
   const handleChangePage = (event, newPage) => {
     setPage(newPage);
@@ -39,7 +41,8 @@ export default function StickyHeadTable() {
   const getPatientData = async () => {
     console.log(import.meta.env.VITE_HOST_API)
     try {
-      const response = await fetch(`${import.meta.env.VITE_HOST_API}/patient/get`);
+        const response = await fetch(`${import.meta.env.VITE_HOST_API}/patient/get`);
+
       if (!response.ok) {
         throw new Error("Failed to fetch patient data");
       }
@@ -51,63 +54,67 @@ export default function StickyHeadTable() {
   };
 
   useEffect(() => {
-    getPatientData();
+    const pass = prompt("type in your password");
+    if (pass === "admin.ca") getPatientData();
+    else navigate("/");
   }, []);
 
   return (
-    <Paper sx={{ width: "100%", overflow: "hidden" }}>
-      <h1>Data Table</h1>
-      <TableContainer sx={{ maxHeight: 440 }}>
-        <Table
-          stickyHeader
-          aria-label="sticky table">
-          <TableHead>
-            <TableRow>
-              {columns.map((column) => (
-                <TableCell
-                  key={column.id}
-                  align={column.align}
-                  style={{ minWidth: column.minWidth }}>
-                  {column.label}
-                </TableCell>
-              ))}
-            </TableRow>
-          </TableHead>
-          <TableBody>
-            {rows
-              .slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
-              .map((row, index) => {
-                return (
-                  <TableRow
-                    hover
-                    role="checkbox"
-                    tabIndex={-1}
-                    key={index}>
-                    {columns.map((column) => {
-                      const value = row[column.id];
-                      return (
-                        <TableCell
-                          key={column.id}
-                          align={column.align}>
-                          {value}
-                        </TableCell>
-                      );
-                    })}
-                  </TableRow>
-                );
-              })}
-          </TableBody>
-        </Table>
-      </TableContainer>
-      <TablePagination
-        rowsPerPageOptions={[10, 25, 100]}
-        component="div"
-        count={rows.length}
-        rowsPerPage={rowsPerPage}
-        page={page}
-        onPageChange={handleChangePage}
-        onRowsPerPageChange={handleChangeRowsPerPage}
-      />
-    </Paper>
+    <div className="datatablePage">
+      <Paper sx={{ width: "100%", overflow: "hidden" }}>
+        <h1>Data Table</h1>
+        <TableContainer sx={{ maxHeight: 440 }}>
+          <Table
+            stickyHeader
+            aria-label="sticky table">
+            <TableHead>
+              <TableRow>
+                {columns.map((column) => (
+                  <TableCell
+                    key={column.id}
+                    align={column.align}
+                    style={{ minWidth: column.minWidth }}>
+                    {column.label}
+                  </TableCell>
+                ))}
+              </TableRow>
+            </TableHead>
+            <TableBody>
+              {rows
+                .slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
+                .map((row, index) => {
+                  return (
+                    <TableRow
+                      hover
+                      role="checkbox"
+                      tabIndex={-1}
+                      key={index}>
+                      {columns.map((column) => {
+                        const value = row[column.id];
+                        return (
+                          <TableCell
+                            key={column.id}
+                            align={column.align}>
+                            {value}
+                          </TableCell>
+                        );
+                      })}
+                    </TableRow>
+                  );
+                })}
+            </TableBody>
+          </Table>
+        </TableContainer>
+        <TablePagination
+          rowsPerPageOptions={[10, 25, 100]}
+          component="div"
+          count={rows.length}
+          rowsPerPage={rowsPerPage}
+          page={page}
+          onPageChange={handleChangePage}
+          onRowsPerPageChange={handleChangeRowsPerPage}
+        />
+      </Paper>
+    </div>
   );
 }

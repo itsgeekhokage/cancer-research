@@ -1,9 +1,12 @@
 /** @format */
 
 .mainPage {
-  padding: 3rem;
   display: flex;
-
   justify-content: center;
   align-items: center;
+}
+
+.datatablePage {
+  display: flex;
+  padding: 4rem 3rem;
 }

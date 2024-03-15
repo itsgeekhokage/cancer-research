@@ -9,8 +9,8 @@
   margin: 0 auto;
   padding: 30px;
   border-radius: 10px;
-  background-color: #f8f9fa;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  margin-top: 4rem;
 }
 
 h2 {
@@ -22,18 +22,38 @@ h2 {
 .formGroup {
   margin-bottom: 20px;
   display: flex;
-  align-content: center;
+  flex-wrap: wrap;
+}
+.formOptionGroup {
+  margin-bottom: 20px;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  div {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 3rem;
+    padding: 0 2rem;
+  }
 }
 
 .formGroup label {
-  display: block;
   font-size: 16px;
-  margin-bottom: 8px;
-  color: #555;
+  color: #212121;
+  font-size: 1.4rem;
+  font-weight: 600;
   width: 200px;
-  text-align: left;
+  display: inline-block;
+}
+.formOptionGroup label {
+  font-size: 16px;
+  color: #212121;
+  font-size: 1.4rem;
+  font-weight: 600;
+  display: inline-block;
   display: flex;
   align-items: center;
+  gap: 1rem;
 }
 
 .formGroup input {
@@ -43,6 +63,18 @@ h2 {
   border-radius: 6px;
   font-size: 16px;
   transition: border-color 0.3s ease-in-out;
+  color: #555; /* Adjust input text color */
+}
+
+.formOptionGroup input {
+  width: 20px;
+  height: 20px;
+  padding: 12px;
+  border: 1px solid #ced4da;
+  border-radius: 6px;
+  font-size: 16px;
+  transition: border-color 0.3s ease-in-out;
+  color: #555; /* Adjust input text color */
 }
 
 .formGroup input:focus {
@@ -53,11 +85,16 @@ h2 {
 .button {
   width: 100%;
   background-color: #007bff;
-  color: #feffff;
-  padding: 10px;
-  border: 0;
-  outline: 0;
-  font-size: 1.2rem;
+  color: #fff;
+  padding: 12px; /* Increase button padding */
+  border: none;
+  outline: none;
+  font-size: 1rem;
   cursor: pointer;
   border-radius: 6px;
+  transition: background-color 0.3s ease-in-out;
+}
+
+.button:hover {
+  background-color: #0056b3; /* Darker shade on hover */
 }
