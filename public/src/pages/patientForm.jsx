@@ -3,13 +3,14 @@
 import { useEffect, useState } from "react";
 import styles from "./Form.module.css";
 import { useLocation, useNavigate } from "react-router-dom";
+import {toast} from "react-toastify";
 
 const PatientForm = () => {
   const [formData, setFormData] = useState({
     name: "",
     serialno: "",
     age: "",
-    sex: "Male",
+    sex: "male",
     fatherName: "",
     post: "",
     district: "Varanasi",
@@ -42,7 +43,6 @@ const PatientForm = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log(formData);
     setPatientForm();
   };
 
@@ -62,12 +62,25 @@ const PatientForm = () => {
       if (!response.ok) {
         throw new Error("Network response was not ok");
       }
-
-      console.log("Patient data submitted successfully");
+      setFormData({
+        name: "",
+        serialno: "",
+        age: "",
+        sex: "male",
+        fatherName: "",
+        post: "",
+        district: "Varanasi",
+        state: "Uttar Pradesh",
+        typeOfTumor: "",
+        pip: location.state,
+      });
+      toast.success("Patient data submitted successfully");
     } catch (error) {
       console.error("There was a problem with your fetch operation:", error);
+      toast.error("unsuccessful, check your data again...");
     }
   };
+
 
   return (
     <div className={styles.formContainer}>
@@ -116,8 +129,8 @@ const PatientForm = () => {
               <input
                 type="radio"
                 name="sex"
-                value="Male"
-                checked={formData.sex === "Male"}
+                value="male"
+                checked={formData.sex === "male"}
                 onChange={handleChange}
               />
               Male
@@ -126,8 +139,8 @@ const PatientForm = () => {
               <input
                 type="radio"
                 name="sex"
-                value="Female"
-                checked={formData.sex === "Female"}
+                value="female"
+                checked={formData.sex === "female"}
                 onChange={handleChange}
               />
               Female
@@ -136,8 +149,8 @@ const PatientForm = () => {
               <input
                 type="radio"
                 name="sex"
-                value="Others"
-                checked={formData.sex === "Others"}
+                value="others"
+                checked={formData.sex === "others"}
                 onChange={handleChange}
               />
               Others
