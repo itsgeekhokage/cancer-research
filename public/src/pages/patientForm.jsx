@@ -1,20 +1,36 @@
 /** @format */
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import styles from "./Form.module.css";
+import { useLocation, useNavigate } from "react-router-dom";
 
 const PatientForm = () => {
   const [formData, setFormData] = useState({
     name: "",
     serialno: "",
     age: "",
-    sex: "",
+    sex: "Male",
     fatherName: "",
     post: "",
-    district: "",
-    state: "",
+    district: "Varanasi",
+    state: "Uttar Pradesh",
     typeOfTumor: "",
+    pip: "",
   });
+  const location = useLocation();
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    console.log(location.state);
+    if (location.state) {
+      setFormData((preData) => ({
+        ...preData,
+        pip: location.state,
+      }));
+    } else {
+      navigate("/");
+    }
+  }, [location]);
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -33,7 +49,7 @@ const PatientForm = () => {
   const setPatientForm = async () => {
     try {
       const response = await fetch(
-        `${import.meta.env.HOSTLINK}/patient/get`,
+        `${import.meta.env.VITE_HOST_API}/patient/set`,
         {
           method: "POST",
           headers: {
@@ -93,17 +109,40 @@ const PatientForm = () => {
             required
           />
         </div>
-        <div className={styles.formGroup}>
-          <label htmlFor="sex">Sex:</label>
-          <input
-            type="text"
-            id="sex"
-            name="sex"
-            value={formData.sex}
-            onChange={handleChange}
-            placeholder="Enter Sex"
-            required
-          />
+        <div className={styles.formOptionGroup}>
+          <label>Sex:</label>
+          <div>
+            <label>
+              <input
+                type="radio"
+                name="sex"
+                value="Male"
+                checked={formData.sex === "Male"}
+                onChange={handleChange}
+              />
+              Male
+            </label>
+            <label>
+              <input
+                type="radio"
+                name="sex"
+                value="Female"
+                checked={formData.sex === "Female"}
+                onChange={handleChange}
+              />
+              Female
+            </label>
+            <label>
+              <input
+                type="radio"
+                name="sex"
+                value="Others"
+                checked={formData.sex === "Others"}
+                onChange={handleChange}
+              />
+              Others
+            </label>
+          </div>
         </div>
         <div className={styles.formGroup}>
           <label htmlFor="fatherName">Father Name:</label>

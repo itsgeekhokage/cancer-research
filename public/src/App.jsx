@@ -1,9 +1,10 @@
 /** @format */
 
-import "./App.css"
+import "./App.css";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import StickyHeadTable from "./pages/Datatable";
 import PatientForm from "./pages/patientForm";
+import LoginForm from "./pages/Login";
 
 function App() {
   return (
@@ -12,13 +13,16 @@ function App() {
         <Routes>
           <Route
             path="/"
+            element={<LoginForm />}
+          />
+          <Route
+            path="/form"
             element={<PatientForm />}
           />
           <Route
             path="/datatable"
             element={<StickyHeadTable />}
           />
-          {/* Add more routes here if needed */}
         </Routes>
       </Router>
     </div>

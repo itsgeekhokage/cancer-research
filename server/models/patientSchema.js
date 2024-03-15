@@ -10,7 +10,8 @@ const patientSchema = new mongoose.Schema({
     post : String,
     district : String,
     state : String,
-    typeOfTumor : String
+    typeOfTumor : String,
+    pip : String
 })
 
 const patientModel = new mongoose.model('patient', patientSchema);
