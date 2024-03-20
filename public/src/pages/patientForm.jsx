@@ -12,6 +12,7 @@ const PatientForm = () => {
     age: "",
     sex: "male",
     fatherName: "",
+    village : "",
     post: "",
     district: "Varanasi",
     state: "Uttar Pradesh",
@@ -68,6 +69,7 @@ const PatientForm = () => {
         age: "",
         sex: "male",
         fatherName: "",
+        village : "",
         post: "",
         district: "Varanasi",
         state: "Uttar Pradesh",
@@ -158,7 +160,7 @@ const PatientForm = () => {
           </div>
         </div>
         <div className={styles.formGroup}>
-          <label htmlFor="fatherName">Father Name:</label>
+          <label htmlFor="fatherName">Father/Husband Name:</label>
           <input
             type="text"
             id="fatherName"
@@ -166,6 +168,18 @@ const PatientForm = () => {
             value={formData.fatherName}
             onChange={handleChange}
             placeholder="Enter Father's Name"
+            required
+          />
+        </div>
+        <div className={styles.formGroup}>
+          <label htmlFor="village">Village:</label>
+          <input
+            type="text"
+            id="village"
+            name="village"
+            value={formData.village}
+            onChange={handleChange}
+            placeholder="Enter Village"
             required
           />
         </div>
