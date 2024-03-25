@@ -1,7 +1,7 @@
 const logins = [
     {
         username: "shivam",
-        password: "shivam.ca"
+        password: "shivam.lu"
     },
     {
         username: "harsh",

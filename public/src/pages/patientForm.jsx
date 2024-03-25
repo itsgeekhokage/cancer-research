@@ -4,6 +4,7 @@ import { useEffect, useState } from "react";
 import styles from "./Form.module.css";
 import { useLocation, useNavigate } from "react-router-dom";
 import {toast} from "react-toastify";
+import typesOfCancer from "../assets/typesOfCancer";
 
 const PatientForm = () => {
   const [formData, setFormData] = useState({
@@ -221,15 +222,21 @@ const PatientForm = () => {
         </div>
         <div className={styles.formGroup}>
           <label htmlFor="typeOfTumor">Type of Tumor:</label>
-          <input
-            type="text"
+          <select
             id="typeOfTumor"
             name="typeOfTumor"
             value={formData.typeOfTumor}
             onChange={handleChange}
-            placeholder="Enter Type of Tumor"
-            required
-          />
+            required>
+            <option value="">Select Type of Tumor</option>
+            {typesOfCancer.map((cancerType, index) => (
+              <option
+                key={index}
+                value={cancerType}>
+                {cancerType}
+              </option>
+            ))}
+          </select>
         </div>
         <button
           type="submit"
