@@ -4,6 +4,7 @@ import { useEffect, useState } from "react";
 import styles from "./Form.module.css";
 import { useLocation, useNavigate } from "react-router-dom";
 import {toast} from "react-toastify";
+import typesOfCancer from "../assets/typesOfCancer";
 
 const PatientForm = () => {
   const [formData, setFormData] = useState({
@@ -12,6 +13,7 @@ const PatientForm = () => {
     age: "",
     sex: "male",
     fatherName: "",
+    village : "",
     post: "",
     district: "Varanasi",
     state: "Uttar Pradesh",
@@ -68,6 +70,7 @@ const PatientForm = () => {
         age: "",
         sex: "male",
         fatherName: "",
+        village : "",
         post: "",
         district: "Varanasi",
         state: "Uttar Pradesh",
@@ -158,7 +161,7 @@ const PatientForm = () => {
           </div>
         </div>
         <div className={styles.formGroup}>
-          <label htmlFor="fatherName">Father Name:</label>
+          <label htmlFor="fatherName">Father/Husband Name:</label>
           <input
             type="text"
             id="fatherName"
@@ -166,6 +169,18 @@ const PatientForm = () => {
             value={formData.fatherName}
             onChange={handleChange}
             placeholder="Enter Father's Name"
+            required
+          />
+        </div>
+        <div className={styles.formGroup}>
+          <label htmlFor="village">Village:</label>
+          <input
+            type="text"
+            id="village"
+            name="village"
+            value={formData.village}
+            onChange={handleChange}
+            placeholder="Enter Village"
             required
           />
         </div>
@@ -207,15 +222,21 @@ const PatientForm = () => {
         </div>
         <div className={styles.formGroup}>
           <label htmlFor="typeOfTumor">Type of Tumor:</label>
-          <input
-            type="text"
+          <select
             id="typeOfTumor"
             name="typeOfTumor"
             value={formData.typeOfTumor}
             onChange={handleChange}
-            placeholder="Enter Type of Tumor"
-            required
-          />
+            required>
+            <option value="">Select Type of Tumor</option>
+            {typesOfCancer.map((cancerType, index) => (
+              <option
+                key={index}
+                value={cancerType}>
+                {cancerType}
+              </option>
+            ))}
+          </select>
         </div>
         <button
           type="submit"

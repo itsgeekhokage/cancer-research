@@ -27,6 +27,11 @@ const patientSchema = new mongoose.Schema({
         required: true,
         trim: true
     },
+    village: {
+        type: String,
+        required: true,
+        trim: true
+    },
     post: {
         type: String,
         required: true,

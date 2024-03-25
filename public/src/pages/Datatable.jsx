@@ -17,6 +17,7 @@ const columns = [
   { id: "age", label: "Age", minWidth: 100, align: "right" },
   { id: "sex", label: "Sex", minWidth: 100, align: "right" },
   { id: "fatherName", label: "Father's Name", minWidth: 170, align: "right" },
+  { id: "village", label: "Village", minWidth: 100, align: "right" },
   { id: "post", label: "Post", minWidth: 100, align: "right" },
   { id: "district", label: "District", minWidth: 100, align: "right" },
   { id: "state", label: "State", minWidth: 100, align: "right" },
