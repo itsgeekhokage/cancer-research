@@ -3,8 +3,9 @@
 import { useEffect, useState } from "react";
 import styles from "./Form.module.css";
 import { useLocation, useNavigate } from "react-router-dom";
-import {toast} from "react-toastify";
+import { toast } from "react-toastify";
 import typesOfCancer from "../assets/typesOfCancer";
+import districts from "../assets/district";
 
 const PatientForm = () => {
   const [formData, setFormData] = useState({
@@ -13,13 +14,14 @@ const PatientForm = () => {
     age: "",
     sex: "male",
     fatherName: "",
-    village : "",
+    village: "",
     post: "",
     district: "Varanasi",
     state: "Uttar Pradesh",
     typeOfTumor: "",
     pip: "",
   });
+  const [districtOptions, setDistrictOptions] = useState([]);
   const location = useLocation();
   const navigate = useNavigate();
 
@@ -35,16 +37,24 @@ const PatientForm = () => {
     }
   }, [location]);
 
+  const districtLoad = (value) => {
+    let dlist = districts[value];
+    setDistrictOptions(dlist);
+  };
+
   const handleChange = (e) => {
     const { name, value } = e.target;
     setFormData((prevData) => ({
       ...prevData,
       [name]: value,
     }));
+
+    if (name == "state") districtLoad(value);
   };
 
   const handleSubmit = (e) => {
     e.preventDefault();
+    console.log(formData);
     setPatientForm();
   };
 
@@ -70,7 +80,7 @@ const PatientForm = () => {
         age: "",
         sex: "male",
         fatherName: "",
-        village : "",
+        village: "",
         post: "",
         district: "Varanasi",
         state: "Uttar Pradesh",
@@ -83,7 +93,6 @@ const PatientForm = () => {
       toast.error("unsuccessful, check your data again...");
     }
   };
-
 
   return (
     <div className={styles.formContainer}>
@@ -173,16 +182,41 @@ const PatientForm = () => {
           />
         </div>
         <div className={styles.formGroup}>
-          <label htmlFor="village">Village:</label>
-          <input
-            type="text"
-            id="village"
-            name="village"
-            value={formData.village}
+          <label htmlFor="state">State:</label>
+          <select
+            id="state"
+            name="state"
+            value={formData.state}
             onChange={handleChange}
-            placeholder="Enter Village"
-            required
-          />
+            required>
+            <option value="">Select State</option>
+            {Object.keys(districts).map((state, index) => (
+              <option
+                key={index}
+                value={state}>
+                {state}
+              </option>
+            ))}
+          </select>
+        </div>
+
+        <div className={styles.formGroup}>
+          <label htmlFor="district">District:</label>
+          <select
+            id="district"
+            name="district"
+            value={formData.district}
+            onChange={handleChange}
+            required>
+            <option value="">Select District</option>
+            {districtOptions.map((district, index) => (
+              <option
+                key={index}
+                value={district}>
+                {district}
+              </option>
+            ))}
+          </select>
         </div>
         <div className={styles.formGroup}>
           <label htmlFor="post">Post:</label>
@@ -197,29 +231,18 @@ const PatientForm = () => {
           />
         </div>
         <div className={styles.formGroup}>
-          <label htmlFor="district">District:</label>
+          <label htmlFor="village">Village:</label>
           <input
             type="text"
-            id="district"
-            name="district"
-            value={formData.district}
+            id="village"
+            name="village"
+            value={formData.village}
             onChange={handleChange}
-            placeholder="Enter District"
+            placeholder="Enter Village"
             required
           />
         </div>
-        <div className={styles.formGroup}>
-          <label htmlFor="state">State:</label>
-          <input
-            type="text"
-            id="state"
-            name="state"
-            value={formData.state}
-            onChange={handleChange}
-            placeholder="Enter State"
-            required
-          />
-        </div>
+
         <div className={styles.formGroup}>
           <label htmlFor="typeOfTumor">Type of Tumor:</label>
           <select
