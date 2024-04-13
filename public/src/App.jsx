@@ -7,6 +7,7 @@ import PatientForm from "./pages/patientForm";
 import LoginForm from "./pages/Login";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import Report from "./pages/Report";
 
 function App() {
   return (
@@ -15,8 +16,12 @@ function App() {
         <Routes>
           <Route
             path="/"
-            element={<LoginForm />}
+            element={<Report />}
           />
+          {/* <Route
+            path="/"
+            element={<LoginForm />}
+          /> */}
           <Route
             path="/form"
             element={<PatientForm />}

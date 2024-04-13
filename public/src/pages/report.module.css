@@ -1,0 +1,30 @@
+/** @format */
+
+.page {
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+  width: 100vw;
+  height: 100vh;
+}
+
+.filterBox, .colorBox {
+  border-radius: 30px;
+  background: #ffffff;
+  box-shadow: inset -5px -5px 10px #666666, inset 5px 5px 10px #ffffff;
+  display: flex;
+  flex-direction: column;
+  padding: 3vw;
+  gap: 1vw;
+}
+
+.colorDesc{
+    display: flex;
+    gap: 2vw;
+}
+
+.colorIndicator{
+    display: inline-block;
+    width: 30px;
+    height: 30px;
+}
