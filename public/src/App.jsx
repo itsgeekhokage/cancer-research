@@ -16,12 +16,12 @@ function App() {
         <Routes>
           <Route
             path="/"
+            element={<LoginForm />}
+          />
+          <Route
+            path="/report"
             element={<Report />}
           />
-          {/* <Route
-            path="/"
-            element={<LoginForm />}
-          /> */}
           <Route
             path="/form"
             element={<PatientForm />}

@@ -92,8 +92,8 @@ const Report = () => {
   return (
     <div className={styles.page}>
       <div className={styles.filterBox}>
-        <span onClick={() => setParameter("district")}> District </span>
-        <span onClick={() => setParameter("typeOfCancer")}>
+        <span onClick={() => setParameter("district")} className={parameter === "district" ? styles.activeSelector : styles.inactiveSelector}> District </span>
+        <span onClick={() => setParameter("typeOfCancer")} className={parameter === "typeOfCancer" ? styles.activeSelector : styles.inactiveSelector}>
           {" "}
           Type of Cancer
         </span>
@@ -105,10 +105,10 @@ const Report = () => {
         onMouseEnter={onPieEnter}>
         <Pie
           data={rows}
-          cx={300}
-          cy={300}
+          cx={230}
+          cy={230}
           innerRadius={70}
-          outerRadius={120}
+          outerRadius={150}
           fill="#8884d8"
           paddingAngle={4}
           dataKey="value"
