@@ -1,0 +1,44 @@
+/** @format */
+
+.page {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 5vw;
+  width: 100vw;
+  height: 100vh;
+  padding: 3vw;
+}
+
+.filterBox, .colorBox {
+  border-radius: 30px;
+  background: #ffffff;
+  box-shadow: inset -5px -5px 10px #666666, inset 5px 5px 10px #ffffff;
+  display: flex;
+  flex-direction: column;
+  padding: 3vw;
+  gap: 1vw;
+}
+
+.colorDesc{
+    display: flex;
+    gap: 2vw;
+}
+
+.colorIndicator{
+    display: inline-block;
+    width: 30px;
+    height: 30px;
+}
+
+.activeSelector{
+    color: #ffffff;
+    background-color: #666666;
+    padding: 1vw;
+    width: 12vw;
+}
+.inactiveSelector{
+    padding: 1vw;
+    width: 12vw;
+    cursor: pointer;
+}
