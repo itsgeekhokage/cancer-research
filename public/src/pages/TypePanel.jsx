@@ -480,7 +480,7 @@ const TypePanel = ({ data, setPanel }) => {
       <div className={styles.sideBar}>
         <span className={styles.sidebarButton} onClick={()=>setPanel("")}>Back</span>
         <span className={styles.sidebarButton} onClick={()=>setSelection("all")}>All</span>
-        {cancerList?.map((item, ind) => (
+        {cancerList?.slice(0,9).map((item, ind) => (
           <span
             className={styles.sidebarButton}
             onClick={() => setSelection(item)}>

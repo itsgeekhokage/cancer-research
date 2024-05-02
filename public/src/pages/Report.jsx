@@ -50,7 +50,7 @@ const Report = () => {
         </>
       )}
       {panel == "typesOfCancer" && <TypePanel data={data} setPanel={setPanel} />}
-      {panel == "district" && <DistrictPanel data={data} setPanel/>}
+      {panel == "district" && <DistrictPanel data={data} setPanel={setPanel}/>}
     </div>
   );
 };

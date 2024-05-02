@@ -481,15 +481,23 @@ const AgeGraph = ({ data, district }) => {
   );
 };
 
-const DistrictPanel = ({ data }) => {
+const DistrictPanel = ({ data, setPanel }) => {
   const [cancerList, setCancerList] = useState([]);
   const [selection, setSelection] = useState("all");
   return (
     <div className={styles.fullPanel}>
       <div className={styles.sideBar}>
-        <span className={styles.sidebarButton}>Back</span>
-        <span className={styles.sidebarButton}>All</span>
-        {cancerList?.map((item, ind) => (
+        <span
+          className={styles.sidebarButton}
+          onClick={() => setPanel("")}>
+          Back
+        </span>
+        <span
+          className={styles.sidebarButton}
+          onClick={() => setSelection("all")}>
+          All
+        </span>
+        {cancerList.slice(0,9)?.map((item, ind) => (
           <span
             className={styles.sidebarButton}
             onClick={() => setSelection(item)}>
