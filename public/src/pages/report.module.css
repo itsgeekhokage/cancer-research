@@ -8,12 +8,12 @@
   gap: 5vw;
   width: 100vw;
   min-height: 100vh;
-  background-color: #ffffff;
+  background-color: #222222;
 }
 
 .welcomeHeading{
   font-size: 3vw;
-  color: #222222;
+  color: #fff;
   text-align: center;
 }
 
