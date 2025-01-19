@@ -1,55 +1,55 @@
-/* Base styles */
+/** @format */
+
 .page {
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
   gap: 5vw;
-  width: 100%;
+  width: 100vw;
   min-height: 100vh;
   background-color: #222222;
 }
 
-.welcomeHeading {
+.welcomeHeading{
   font-size: 3vw;
   color: #fff;
   text-align: center;
 }
 
-.mainButtonSection {
+.mainButtonSection{
   display: flex;
   justify-content: center;
   gap: 2vw;
 }
 
-.fullPanel {
+.fullPanel{
   display: flex;
-  width: 100%;
+  width: 100vw;
   justify-content: space-between;
 }
 
-.sideBar {
+.sideBar{
   width: 22vw;
   display: flex;
   flex-direction: column;
   justify-content: center;
-  gap: 0.3vw;
+  gap: .3vw;
   background: #1187fd;
   height: 100vh;
   padding: 2vw;
+  .sidebarButton{
+    border-bottom: 1px solid #ef692178;
+    padding: .3vw;
+    cursor: pointer;
+  }
+  .sidebarButton:hover{
+    background-color: #ef6921;
+  }
 }
 
-.sidebarButton {
-  border-bottom: 1px solid rgba(239, 105, 33, 0.47);
-  padding: 0.3vw;
-  cursor: pointer;
-}
 
-.sidebarButton:hover {
-  background-color: #ef6921;
-}
-
-.selectionPanel {
+.selectionPanel{
   display: flex;
   flex-direction: column;
   width: 70%;
@@ -57,23 +57,24 @@
   overflow-y: scroll;
   padding: 1vw;
   padding-top: 4vw;
+
 }
 
-.selectionPanelHeading {
+.selectionPanelHeading{
   font-size: 1.3vw;
   color: white;
   margin-top: 4vw;
   margin-bottom: -1vw;
 }
 
-.selectionPanelMainHeading {
+.selectionPanelMainHeading{
   font-size: 3vw;
   color: white;
   margin-top: 4vw;
   margin-bottom: -1vw;
 }
 
-.chartArea {
+.chartArea{
   display: flex;
   align-items: center;
   width: 70vw;
@@ -81,7 +82,7 @@
   align-items: center;
 }
 
-.button {
+.button{
   padding: 1vw 2vw;
   font-size: 1.6vw;
   font-weight: 600;
@@ -108,15 +109,15 @@
   color: white;
 }
 
-.colorDesc {
-  display: flex;
-  gap: 2vw;
+.colorDesc{
+    display: flex;
+    gap: 2vw;
 }
 
-.colorIndicator {
-  display: inline-block;
-  width: 30px;
-  height: 30px;
+.colorIndicator{
+    display: inline-block;
+    width: 30px;
+    height: 30px;
 }
 
 .activeSelector{

@@ -1,4 +1,4 @@
-      /** @format */
+/** @format */
 
 import "./App.css";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
@@ -8,7 +8,6 @@ import LoginForm from "./pages/Login";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import Report from "./pages/Report";
-import CamDataEntry from "./pages/camModel/CamDataEntry";
 
 function App() {
   return (
@@ -30,10 +29,6 @@ function App() {
           <Route
             path="/datatable"
             element={<StickyHeadTable />}
-          />
-          <Route
-            path="/cam"
-            element={<CamDataEntry />}
           />
         </Routes>
       </Router>
